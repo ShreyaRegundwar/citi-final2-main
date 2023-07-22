@@ -29,9 +29,9 @@
         Selected File: {{ selectedFileName }}
         <button type="button" style="background-color: rgb(56, 155, 13); color: white;" class="clear-button" (click)="clearFileSelection(fileInput)">Clear</button>
       </div>
-      <button type="button" class="btn" (click)="startScreening()">UPLOAD FILE</button>
-      <div *ngIf="invalidFileType" class="error-message">
-        Invalid file type! Please choose an xlsx file.
+      <button type="button" class="btn" (click)="uploadFile()">UPLOAD FILE</button>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
       </div>
     </div>
   </div>

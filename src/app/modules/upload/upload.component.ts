@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { UploadService } from '../upload.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as XLSX from 'xlsx';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { InvalidFileTypeComponent } from '../invalid-file-type/invalid-file-type.component';
 
 @Component({
   selector: 'app-upload',
@@ -19,11 +20,12 @@ export class UploadComponent {
   selectedFileName: string | null = null;
   errorMessage: string = '';
 
-  constructor(private router: Router, private uploadService: UploadService) {
+  constructor(private router: Router, private uploadService: UploadService ,  private dialog: MatDialog ) {
     this.fileForm = new FormGroup({
       file: new FormControl('', Validators.required),
     });
   }
+
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -39,20 +41,26 @@ export class UploadComponent {
 
     const inputElement = event.target as HTMLInputElement;
     const files = inputElement.files;
-
     if (files && files.length > 0) {
       const file = files[0];
-
+  
       if (file && file.type !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         // Invalid file type, clear the selected file and show the error message
         this.clearFileSelection(inputElement);
-        this.invalidFileType = true;
+  
+        // Open the dialog with the error message
+        const dialogRef = this.dialog.open(InvalidFileTypeComponent, {
+          width: '250px',
+          data: 'Invalid file type! Please choose an xlsx file.',
+        });
       } else {
         this.invalidFileType = false;
         this.selectedFileName = file.name;
       }
     }
   }
+
+  
 
   clearFileSelection(fileInput: any) {
     this.fileForm.patchValue({ file: null });
@@ -63,14 +71,17 @@ export class UploadComponent {
     fileInput.value = ''; // Clear the file input value
   }
 
-  startScreening() {
+  uploadFile() {
     if (this.excelData && this.excelData.length > 0) {
       this.uploadService.setExcelData(this.excelData);
 
       // Navigate to the screening page
       this.router.navigate(['/Sanction']);
-    } else {
-      this.errorMessage = '*Please upload a file';
-    }
+    } else if (!this.excelData || this.excelData.length === 0) {
+      const dialogRef = this.dialog.open(InvalidFileTypeComponent, {
+        width: '250px',
+        data: 'Please choose an xlsx file.',
+      })
+    } 
   }
 }

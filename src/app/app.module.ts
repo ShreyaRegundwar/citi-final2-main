@@ -17,18 +17,21 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from './shared/shared.module';
 import { AboutComponent } from './modules/about/about.component';
-
+import { InvalidFileTypeComponent } from './modules/invalid-file-type/invalid-file-type.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
+    InvalidFileTypeComponent,
   
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     DefaultModule,
     FlexLayoutModule,

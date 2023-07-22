@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,6 +29,7 @@
     background-color: #ff8c8c;
   }
 
+  
   tr:hover{
     background-color: rgb(206, 200, 200);
   }
@@ -74,6 +76,81 @@
             <td>{{ data.PayeeAccount }}</td>
             <td>{{ data.Amount }}</td>
             <td [ngClass]="{ 'PASS': data.Status === 'PASS', 'FAIL': data.Status === 'FAIL' }">{{ data.Status }}</td>
+          </tr>
+        </tbody>
+    </table>
+  </body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="sanction.component.scss">
+    <style>
+      table {
+        width: 70%;
+        margin-left: 10%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: rgb(206, 200, 200);
+        padding-left: 8px;
+        font-weight: bold;
+      }
+
+     td.PASS {
+    background-color: #ccff99;
+  }
+
+  td.FAIL {
+    background-color: #ff8c8c;
+  }
+
+  
+  tr:hover{
+    background-color: rgb(206, 200, 200);
+  }
+    </style>
+  </head>
+
+  <body class="b">
+    <div class="filter-container">
+      <mat-form-field >
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="selectedFilter" (selectionChange)="applyFilters()">
+          <mat-option value="">All</mat-option>
+          <mat-option value="PASS">PASS</mat-option>
+          <mat-option value="FAIL">FAIL</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>DD-MM-YYYY</mat-label>
+        <input matInput (keyup)="SearchDate($event)" placeholder="Search" />
+      </mat-form-field>
+    </div>
+      <table style="background-color: rgba(197, 209, 217, 0.8) ;">
+        <thead>
+          <tr>
+            <!-- Use *ngFor to loop through the headers dynamically -->
+            <th *ngFor="let header of tableHeaders">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+           <!-- Use *ngFor to loop through filteredData and display the fetched data -->
+           <tr *ngFor="let data of filteredData">
+            <!-- Use *ngFor to loop through the object keys dynamically -->
+            <td *ngFor="let key of tableHeaders" [ngClass]="getCellClass(key, data[key])">
+              {{ data[key] }}
+            </td>
           </tr>
         </tbody>
     </table>
