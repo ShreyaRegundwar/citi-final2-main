@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="upload.component.scss">
+</head>
+
+<body class="b">
+  <div class="frame">
+    <h1 class="my">FILE UPLOAD</h1>
+    <div class="center">
+      <div class="title">
+        <h1 class="my2">Please choose an xlsx file to upload</h1>
+      </div>
+      <div class="dropzone">
+        <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" title="No file chosen" alt="upload icon" />
+        <label for="fileInput" style="color: white;">Choose File</label>
+        <input
+          type="file"
+          #fileInput
+          (change)="onFileSelected($event)"
+          accept=".xlsx"
+          [multiple]="false"
+          class="upload-input"
+          id="fileInput"
+        />
+      </div>
+
+      <div *ngIf="selectedFileName" class="selected-file">
+        Selected File: {{ selectedFileName }}
+        <button type="button" style="background-color: rgb(56, 155, 13); color: white;" class="clear-button" (click)="clearFileSelection(fileInput)">Clear</button>
+      </div>
+      <button type="button" class="btn" (click)="startScreening()">UPLOAD FILE</button>
+      <div *ngIf="invalidFileType" class="error-message">
+        Invalid file type! Please choose an xlsx file.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

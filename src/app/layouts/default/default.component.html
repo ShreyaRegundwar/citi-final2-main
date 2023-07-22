@@ -1,0 +1,16 @@
+<app-header (toggleSideBarForMe)="toggleSideBar()">
+</app-header>
+<mat-drawer-container style="position: relative;">
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content [ngStyle]="{'background-image': 'url(https://c4.wallpaperflare.com/wallpaper/88/549/94/5bd471de1a362-wallpaper-preview.jpg)'}" style="background-position: center; background-repeat: no-repeat; background-size: cover;"> 
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>
+
+
+
+
+

@@ -1,0 +1,123 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.frame {
+ /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;*/
+   width:50%;
+    margin-left: 25%;
+    margin-top: 25px;
+    margin-bottom: 70px;
+    max-width:525px;
+    min-height:525px;
+    padding:  50px 10px;
+    background:rgb(56, 155, 13,0.4);
+    background-position: center;
+    position: absolute;
+}
+  
+  .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  border-radius: 3px;
+  box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #474b47;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  }
+  
+  .title {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+  }
+  
+  h1 {
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+  }
+  
+  .dropzone {
+  width: 100px;
+  height: 80px;
+  border: 1px dashed #fff;
+  border-radius: 3px;
+  text-align: center;
+  }
+  
+  .upload-icon {
+  margin: 25px 2px 2px 2px;
+  }
+  
+  .upload-input {
+  position: relative;
+  top: -62px;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  }
+  
+  .btn {
+  display: block;
+    width: 200px;
+  height: 40px;
+  background: rgb(56, 155, 13);
+  color: #fff;
+  border-radius: 3px;
+  border: 0;
+  box-shadow: 0 3px 0 0 rgb(255, 255, 255);
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  font-weight: 700;
+  font-display: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+  }
+  
+  .btn:hover{
+  background: rgb(9, 68, 28);
+  box-shadow: 0 3px 0 0  #86c232;
+  }
+
+  .my{
+    color: #fff;
+    font-size: xx-large;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-display: bold;
+    padding-bottom: 25px;
+  text-align: center;
+  }
+  
+  .my2{
+  color: #fff;
+  font-size: large;
+  font-weight: 700;
+  font-display: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  }
+
+  
